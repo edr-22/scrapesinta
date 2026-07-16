@@ -7,9 +7,8 @@ Ekstensi Chrome untuk mengambil data jurnal dari SINTA Journal Index, halaman fi
 1. Buka `chrome://extensions`.
 2. Aktifkan `Developer mode`.
 3. Klik `Load unpacked`.
-4. Pilih folder ini:
+4. Pilih folder lokasi zip
 
-   `/Users/edr/Documents/Codex/2026-07-15/buatkan-ekstensi-chrome-dimana-saya-bisa-5/outputs/sinta-journal-scraper-extension`
 
 ## Cara Pakai
 
