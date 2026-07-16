@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SINTA Journal Scraper</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div>
+          <h1>SINTA Journal Scraper</h1>
+          <p>Ambil data dari index, filter, atau hasil pencarian jurnal SINTA.</p>
+        </div>
+        <button id="open-index" class="ghost" type="button">Buka Index</button>
+      </header>
+
+      <section class="controls" aria-label="Kontrol scraping">
+        <label class="keyword-field" for="journal-keyword">
+          <span>Keyword jurnal</span>
+          <input id="journal-keyword" type="search" placeholder="opsional: information system">
+        </label>
+        <label class="limit-field" for="max-pages">
+          <span>Batas halaman</span>
+          <input id="max-pages" min="1" type="number" placeholder="semua">
+        </label>
+        <div class="button-row">
+          <button id="scrape-all" class="primary" type="button">Ambil Semua Halaman</button>
+          <button id="scrape-current" type="button">Ambil Halaman Ini</button>
+          <button id="cancel-scrape" type="button">Berhenti</button>
+        </div>
+      </section>
+
+      <section id="status" class="status">Siap. Bisa mulai dari homepage SINTA, Journal Index, filter, atau hasil pencarian.</section>
+
+      <section class="summary" aria-label="Ringkasan hasil">
+        <div>
+          <strong id="metric-journals">0</strong>
+          <span>Jurnal</span>
+        </div>
+        <div>
+          <strong id="metric-pages">0</strong>
+          <span>Halaman</span>
+        </div>
+        <div>
+          <strong id="metric-records">0</strong>
+          <span>Total Records</span>
+        </div>
+      </section>
+
+      <section class="filters" aria-label="Filter tabel">
+        <input id="table-search" type="search" placeholder="Cari nama, subject, afiliasi, link...">
+        <select id="filter-accreditation" aria-label="Filter akreditasi">
+          <option value="">Semua akreditasi</option>
+        </select>
+        <select id="filter-subject" aria-label="Filter subject">
+          <option value="">Semua subject</option>
+        </select>
+        <select id="filter-indexed" aria-label="Filter index">
+          <option value="">Semua index</option>
+          <option value="scopus">Scopus indexed</option>
+          <option value="garuda">Garuda indexed</option>
+          <option value="both">Scopus dan Garuda</option>
+          <option value="not-scopus">Tidak Scopus</option>
+          <option value="not-garuda">Tidak Garuda</option>
+        </select>
+        <select id="sort-field" aria-label="Urutkan tabel">
+          <option value="impact_desc">Impact tertinggi</option>
+          <option value="impact_asc">Impact terendah</option>
+          <option value="h5_desc">H5 tertinggi</option>
+          <option value="citations_desc">Citations tertinggi</option>
+          <option value="citations5yr_desc">Citations 5yr tertinggi</option>
+          <option value="accreditation_asc">Akreditasi terbaik</option>
+          <option value="subject_asc">Subject A-Z</option>
+          <option value="name_asc">Nama A-Z</option>
+        </select>
+      </section>
+
+      <section class="export-row" aria-label="Export">
+        <button id="export-excel" class="primary" type="button">Export Excel</button>
+        <button id="clear-results" type="button">Bersihkan Hasil</button>
+        <span id="visible-count">0 baris tampil</span>
+      </section>
+
+      <section class="table-shell" aria-label="Tabel hasil">
+        <table>
+          <thead id="result-head"></thead>
+          <tbody id="result-body">
+            <tr>
+              <td>Belum ada data.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="xlsx.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

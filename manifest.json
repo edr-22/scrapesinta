@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "SINTA Journal Scraper",
+  "version": "1.0.0",
+  "description": "Scrape data jurnal SINTA dari halaman index, filter, atau hasil pencarian, lalu export ke Excel.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SINTA Journal Scraper"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://sinta.kemdiktisaintek.go.id/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://sinta.kemdiktisaintek.go.id/*"
+      ],
+      "js": [
+        "xlsx.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
